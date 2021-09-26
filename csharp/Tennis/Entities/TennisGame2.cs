@@ -1,3 +1,4 @@
+using System;
 using Tennis.Interfaces;
 using Tennis.Enums;
 
@@ -131,7 +132,7 @@ namespace Tennis.Entities
 
         public void WonPoint(Player playerName)
         {
-            throw new System.NotImplementedException();
+            throw new NotSupportedException("The TennisGame2 class does not implement the new functionality.");
         }
 
         public void WonPoint(string player)

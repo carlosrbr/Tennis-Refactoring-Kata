@@ -74,7 +74,7 @@ namespace Tennis.Entities
 
         public void WonPoint(string player)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException("The TennisGameRefactored class does not implement the old functionality.");
         }
 
         private static string GetScoreName(int score)
