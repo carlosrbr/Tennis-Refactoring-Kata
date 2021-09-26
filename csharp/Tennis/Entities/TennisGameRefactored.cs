@@ -1,4 +1,5 @@
-﻿using Tennis.Interfaces;
+﻿using System;
+using Tennis.Interfaces;
 
 namespace Tennis.Entities
 {
@@ -6,11 +7,6 @@ namespace Tennis.Entities
     {
         private readonly Player _p1;
         private readonly Player _p2;
-        // private int _p1Point;
-        // private int _p2.Point;
-        //
-        private string _p1Res = "";
-        private string _p2Res = "";
 
         public TennisGameRefactored(Player p1, Player p2)
         {
@@ -21,88 +17,53 @@ namespace Tennis.Entities
         public string GetScore()
         {
             var score = "";
+
+            if (_p1.Point >= 4 && _p2.Point >= 0 && (_p1.Point - _p2.Point) >= 2)
+            {
+                return "Win for player1";
+            }
+
+            if (_p2.Point >= 4 && _p1.Point >= 0 && (_p2.Point - _p1.Point) >= 2)
+            {
+                return "Win for player2";
+            }
+
             if (_p1.Point == _p2.Point && _p1.Point < 3)
             {
-                if (_p1.Point == 0)
-                    score = "Love";
-                if (_p1.Point == 1)
-                    score = "Fifteen";
-                if (_p1.Point == 2)
-                    score = "Thirty";
-                score += "-All";
+                return $"{GetScoreName(_p1.Point)}-All";
             }
             if (_p1.Point == _p2.Point && _p1.Point > 2)
-                score = "Deuce";
+                return "Deuce";
 
             if (_p1.Point > 0 && _p2.Point == 0)
             {
-                if (_p1.Point == 1)
-                    _p1Res = "Fifteen";
-                if (_p1.Point == 2)
-                    _p1Res = "Thirty";
-                if (_p1.Point == 3)
-                    _p1Res = "Forty";
-
-                _p2Res = "Love";
-                score = _p1Res + "-" + _p2Res;
+                return GetScoreName(_p1.Point) + "-" + "Love";
             }
             if (_p2.Point > 0 && _p1.Point == 0)
             {
-                if (_p2.Point == 1)
-                    _p2Res = "Fifteen";
-                if (_p2.Point == 2)
-                    _p2Res = "Thirty";
-                if (_p2.Point == 3)
-                    _p2Res = "Forty";
-
-                _p1Res = "Love";
-                score = _p1Res + "-" + _p2Res;
+                return "Love" + "-" + GetScoreName(_p2.Point);
             }
 
             if (_p1.Point > _p2.Point && _p1.Point < 4)
             {
-                if (_p1.Point == 2)
-                    _p1Res = "Thirty";
-                if (_p1.Point == 3)
-                    _p1Res = "Forty";
-                if (_p2.Point == 1)
-                    _p2Res = "Fifteen";
-                if (_p2.Point == 2)
-                    _p2Res = "Thirty";
-                score = _p1Res + "-" + _p2Res;
+                return GetScoreName(_p1.Point) + "-" + GetScoreName(_p2.Point);
             }
             if (_p2.Point > _p1.Point && _p2.Point < 4)
             {
-                if (_p2.Point == 2)
-                    _p2Res = "Thirty";
-                if (_p2.Point == 3)
-                    _p2Res = "Forty";
-                if (_p1.Point == 1)
-                    _p1Res = "Fifteen";
-                if (_p1.Point == 2)
-                    _p1Res = "Thirty";
-                score = _p1Res + "-" + _p2Res;
+                return GetScoreName(_p1.Point) + "-" + GetScoreName(_p2.Point);
             }
 
             if (_p1.Point > _p2.Point && _p2.Point >= 3)
             {
-                score = "Advantage player1";
+                return "Advantage player1";
             }
 
             if (_p2.Point > _p1.Point && _p1.Point >= 3)
             {
-                score = "Advantage player2";
+                return "Advantage player2";
             }
 
-            if (_p1.Point >= 4 && _p2.Point >= 0 && (_p1.Point - _p2.Point) >= 2)
-            {
-                score = "Win for player1";
-            }
-            if (_p2.Point >= 4 && _p1.Point >= 0 && (_p2.Point - _p1.Point) >= 2)
-            {
-                score = "Win for player2";
-            }
-            return score;
+            throw  new Exception("result not found.");
         }
 
         public void WonPoint(string player)
@@ -113,6 +74,17 @@ namespace Tennis.Entities
                 _p2.Score();
         }
 
+
+        private static string GetScoreName(int score)
+        {
+            return score switch
+            {
+                0 => "Love",
+                1 => "Fifteen",
+                2 => "Thirty",
+                3 => "Forty",
+                _ => throw new ArgumentException("invalid parameter", nameof(score))
+            };
+        }
     }
 }
-
