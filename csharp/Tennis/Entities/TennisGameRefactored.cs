@@ -105,38 +105,12 @@ namespace Tennis.Entities
             return score;
         }
 
-        public void SetP1Score(int number)
-        {
-            for (int i = 0; i < number; i++)
-            {
-                P1Score();
-            }
-        }
-
-        public void SetP2Score(int number)
-        {
-            for (var i = 0; i < number; i++)
-            {
-                P2Score();
-            }
-        }
-
-        private void P1Score()
-        {
-            _p1.Score();
-        }
-
-        private void P2Score()
-        {
-            _p2.Score();
-        }
-
         public void WonPoint(string player)
         {
             if (player == "player1")
-                P1Score();
+                _p1.Score();
             else
-                P2Score();
+                _p2.Score();
         }
 
     }
