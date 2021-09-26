@@ -1,4 +1,5 @@
 using Tennis.Interfaces;
+using Tennis.Enums;
 
 namespace Tennis.Entities
 {

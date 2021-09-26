@@ -2,11 +2,11 @@ namespace Tennis.Enums
 {
     public enum Score
     {
-        Love = 1,
-        Fifteen = 2,
-        Thirty = 3,
-        Forty = 4,
-        Advantage = 5,
-        Win = 6,
+        Love = 0,
+        Fifteen = 1,
+        Thirty = 2,
+        Forty = 3,
+        Advantage = 4,
+        Win = 5,
     }
 }
