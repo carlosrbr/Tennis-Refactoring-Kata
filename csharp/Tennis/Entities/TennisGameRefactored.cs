@@ -6,13 +6,13 @@ namespace Tennis.Entities
 {
     public class TennisGameRefactored : ITennisGame
     {
-        private readonly Player _p1;
-        private readonly Player _p2;
+        private readonly Player _playerOne;
+        private readonly Player _playerTwo;
 
-        public TennisGameRefactored(Player p1, Player p2)
+        public TennisGameRefactored(Player playerOne, Player playerTwo)
         {
-            _p1 = p1;
-            _p2 = p2;
+            _playerOne = playerOne;
+            _playerTwo = playerTwo;
         }
 
         public string GetScore()
@@ -24,7 +24,7 @@ namespace Tennis.Entities
                 .SetNext(new DeuceHandle())
                 .SetNext(new AllHandle())
                 .SetNext(new DefaultHandler());
-            return winner.Handle(_p1, _p2);
+            return winner.Handle(_playerOne, _playerTwo);
         }
 
         public void WonPoint(Player player)

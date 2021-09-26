@@ -1,5 +1,5 @@
-﻿using System;
-using Tennis.Entities;
+﻿using Tennis.Entities;
+using Tennis.Exceptions;
 using Tennis.Interfaces;
 
 namespace Tennis.Common
@@ -23,7 +23,7 @@ namespace Tennis.Common
             }
             else
             {
-                throw new Exception("ops...");
+                throw new NotFoundHandleException("There is no Handle configured for this score.");
             }
         }
     }
