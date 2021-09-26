@@ -10,12 +10,9 @@ namespace Tennis.Common
             var max = Math.Max(player1.Point, player2.Point);
             var min = Math.Min(player1.Point, player2.Point);
 
-            if (max >= 4 && min >= 0 && (max - min) >= 2)
-            {
-                return $"Win for {(player1.Point == max ? player1 : player2)}";
-            }
-
-            return base.Handle(player1, player2);
+            return max >= 4 && min >= 0 && (max - min) >= 2
+                ? $"Win for {(player1.Point == max ? player1 : player2)}"
+                : base.Handle(player1, player2);
         }
     }
 }
