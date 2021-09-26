@@ -1,9 +1,10 @@
 using System;
 using Tennis.Entities;
 using Tennis.Interfaces;
+using Tennis.Tests.Data;
 using Xunit;
 
-namespace Tennis.Tests
+namespace Tennis.Tests.Entities
 {
     public class TennisTests
     {

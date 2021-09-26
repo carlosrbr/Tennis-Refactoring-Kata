@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Tennis.Tests
+namespace Tennis.Tests.Data
 {
     public class TestDataGenerator : IEnumerable<object[]>
     {
