@@ -16,8 +16,6 @@ namespace Tennis.Entities
 
         public string GetScore()
         {
-            var score = "";
-
             if (_p1.Point >= 4 && _p2.Point >= 0 && (_p1.Point - _p2.Point) >= 2)
             {
                 return "Win for player1";
@@ -32,6 +30,7 @@ namespace Tennis.Entities
             {
                 return $"{GetScoreName(_p1.Point)}-All";
             }
+
             if (_p1.Point == _p2.Point && _p1.Point > 2)
                 return "Deuce";
 
@@ -39,6 +38,7 @@ namespace Tennis.Entities
             {
                 return GetScoreName(_p1.Point) + "-" + "Love";
             }
+
             if (_p2.Point > 0 && _p1.Point == 0)
             {
                 return "Love" + "-" + GetScoreName(_p2.Point);
@@ -48,6 +48,7 @@ namespace Tennis.Entities
             {
                 return GetScoreName(_p1.Point) + "-" + GetScoreName(_p2.Point);
             }
+
             if (_p2.Point > _p1.Point && _p2.Point < 4)
             {
                 return GetScoreName(_p1.Point) + "-" + GetScoreName(_p2.Point);
@@ -63,17 +64,18 @@ namespace Tennis.Entities
                 return "Advantage player2";
             }
 
-            throw  new Exception("result not found.");
+            throw new Exception("result not found.");
+        }
+
+        public void WonPoint(Player player)
+        {
+            player.Score();
         }
 
         public void WonPoint(string player)
         {
-            if (player == "player1")
-                _p1.Score();
-            else
-                _p2.Score();
+            throw new NotImplementedException();
         }
-
 
         private static string GetScoreName(int score)
         {

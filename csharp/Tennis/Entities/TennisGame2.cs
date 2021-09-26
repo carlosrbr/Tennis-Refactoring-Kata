@@ -129,6 +129,11 @@ namespace Tennis.Entities
             _p2Point++;
         }
 
+        public void WonPoint(Player playerName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void WonPoint(string player)
         {
             if (player == "player1")
