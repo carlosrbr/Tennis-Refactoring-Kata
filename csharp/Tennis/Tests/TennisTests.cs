@@ -3,7 +3,7 @@ using Tennis.Entities;
 using Tennis.Interfaces;
 using Xunit;
 
-namespace Tennis
+namespace Tennis.Tests
 {
     public class TennisTests
     {
