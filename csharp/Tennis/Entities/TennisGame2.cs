@@ -1,4 +1,6 @@
-namespace Tennis
+using Tennis.Interfaces;
+
+namespace Tennis.Entities
 {
     public class TennisGame2 : ITennisGame
     {
