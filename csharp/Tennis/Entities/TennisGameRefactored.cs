@@ -1,4 +1,5 @@
 ﻿using System;
+using Tennis.Common;
 using Tennis.Interfaces;
 
 namespace Tennis.Entities
@@ -16,55 +17,14 @@ namespace Tennis.Entities
 
         public string GetScore()
         {
-            if (_p1.Point >= 4 && _p2.Point >= 0 && (_p1.Point - _p2.Point) >= 2)
-            {
-                return "Win for player1";
-            }
+            var winner = new WinnerHandler();
 
-            if (_p2.Point >= 4 && _p1.Point >= 0 && (_p2.Point - _p1.Point) >= 2)
-            {
-                return "Win for player2";
-            }
-
-            if (_p1.Point == _p2.Point && _p1.Point < 3)
-            {
-                return $"{GetScoreName(_p1.Point)}-All";
-            }
-
-            if (_p1.Point == _p2.Point && _p1.Point > 2)
-                return "Deuce";
-
-            if (_p1.Point > 0 && _p2.Point == 0)
-            {
-                return GetScoreName(_p1.Point) + "-" + "Love";
-            }
-
-            if (_p2.Point > 0 && _p1.Point == 0)
-            {
-                return "Love" + "-" + GetScoreName(_p2.Point);
-            }
-
-            if (_p1.Point > _p2.Point && _p1.Point < 4)
-            {
-                return GetScoreName(_p1.Point) + "-" + GetScoreName(_p2.Point);
-            }
-
-            if (_p2.Point > _p1.Point && _p2.Point < 4)
-            {
-                return GetScoreName(_p1.Point) + "-" + GetScoreName(_p2.Point);
-            }
-
-            if (_p1.Point > _p2.Point && _p2.Point >= 3)
-            {
-                return "Advantage player1";
-            }
-
-            if (_p2.Point > _p1.Point && _p1.Point >= 3)
-            {
-                return "Advantage player2";
-            }
-
-            throw new Exception("result not found.");
+            winner
+                .SetNext(new AdvantageHandle())
+                .SetNext(new DeuceHandle())
+                .SetNext(new AllHandle())
+                .SetNext(new DefaultHandler());
+            return winner.Handle(_p1, _p2);
         }
 
         public void WonPoint(Player player)
@@ -77,7 +37,7 @@ namespace Tennis.Entities
             throw new NotSupportedException("The TennisGameRefactored class does not implement the old functionality.");
         }
 
-        private static string GetScoreName(int score)
+        public static string GetScoreName(int score)
         {
             return score switch
             {

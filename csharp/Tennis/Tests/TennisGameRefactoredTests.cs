@@ -12,8 +12,8 @@ namespace Tennis.Tests
 
         public TennisGameRefactoredTests()
         {
-            this._playerOne = new Player("Player One");
-            this._playerTwo = new Player("Player two");
+            this._playerOne = new Player("player1");
+            this._playerTwo = new Player("player2");
         }
 
         [Theory]
@@ -27,7 +27,6 @@ namespace Tennis.Tests
             );
             CheckAllScores(game, p1, p2, expected);
         }
-
 
         private void CheckAllScores(ITennisGame game, int player1Score, int player2Score, string expectedScore)
         {
