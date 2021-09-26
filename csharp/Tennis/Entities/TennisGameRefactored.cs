@@ -34,19 +34,7 @@ namespace Tennis.Entities
 
         public void WonPoint(string player)
         {
-            throw new NotSupportedException("The TennisGameRefactored class does not implement the old functionality.");
-        }
-
-        public static string GetScoreName(int score)
-        {
-            return score switch
-            {
-                0 => "Love",
-                1 => "Fifteen",
-                2 => "Thirty",
-                3 => "Forty",
-                _ => throw new ArgumentException("invalid parameter", nameof(score))
-            };
+            throw new NotSupportedException("The TennisGameRefactored class does not implement the old overload of WonPoint.");
         }
     }
 }

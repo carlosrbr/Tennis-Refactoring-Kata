@@ -1,4 +1,5 @@
 ﻿using Tennis.Entities;
+using Tennis.ValueObjects;
 
 namespace Tennis.Common
 {
@@ -8,7 +9,7 @@ namespace Tennis.Common
         {
             if (player1.Point == player2.Point && player1.Point < 3)
             {
-                return $"{TennisGameRefactored.GetScoreName(player1.Point)}-All";
+                return $"{Score.GetScoreName(player1.Point)}-All";
             }
 
             return base.Handle(player1, player2);

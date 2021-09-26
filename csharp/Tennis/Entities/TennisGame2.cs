@@ -1,6 +1,5 @@
 using System;
 using Tennis.Interfaces;
-using Tennis.Enums;
 
 namespace Tennis.Entities
 {
@@ -132,7 +131,7 @@ namespace Tennis.Entities
 
         public void WonPoint(Player playerName)
         {
-            throw new NotSupportedException("The TennisGame2 class does not implement the new functionality.");
+            throw new NotSupportedException("The TennisGame2 class does not implement the new overload of WonPoint.");
         }
 
         public void WonPoint(string player)
