@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tennis.Tests.Data
 {
+    [ExcludeFromCodeCoverage]
     public class TestDataGenerator : IEnumerable<object[]>
     {
         private readonly List<object[]> _data = new List<object[]>

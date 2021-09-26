@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Tennis.Entities;
 using Tennis.Interfaces;
 using Tennis.Tests.Data;
@@ -6,6 +7,7 @@ using Xunit;
 
 namespace Tennis.Tests.Entities
 {
+    [ExcludeFromCodeCoverage]
     public class TennisGameRefactoredTests
     {
         private readonly Player _playerOne;
